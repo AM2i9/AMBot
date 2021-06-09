@@ -1,4 +1,6 @@
 import pkgutil
+import importlib
+import inspect
 
 from bot import exts
 
@@ -11,5 +13,10 @@ def walk():
         
         if module.name.rsplit('.')[-1].startswith("_"):
             continue
+        
+        if module.ispkg:
+            imported = importlib.import_module(module.name)
+            if not inspect.isfunction(getattr(imported, "setup", None)):
+                continue
 
         yield module.name
