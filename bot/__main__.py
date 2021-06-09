@@ -1,5 +1,4 @@
 import bot
-import bot.log
 from bot.bot import Bot
 
 import bot.config as conf
