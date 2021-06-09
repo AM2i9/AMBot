@@ -3,6 +3,7 @@ import logging
 import discord
 from discord.ext import commands
 
+from bot import exts
 import bot.config as conf
 
 log = logging.getLogger('bot')
@@ -13,6 +14,13 @@ class Bot(commands.Bot):
         self.ready = False
         
         super().__init__(*args, **kwargs)
+    
+    async def on_ready(self):
+        if not self.ready:
+            self.ready = True
+            log.info(f'Bot logged in as {self.user}')
+        else:
+            log.info('Bot reconnected')
     
     @classmethod
     def create(cls):
@@ -25,9 +33,11 @@ class Bot(commands.Bot):
             intents=intents
         )
 
-    async def on_ready(self):
-        if not self.ready:
-            self.ready = True
-            log.info(f'Bot logged in as {self.user}')
-        else:
-            log.info('Bot reconnected')
+    def load_extensions(self):
+        log.info("Loading extensions...")
+        for ext in exts.walk():
+            try:
+                self.load_extension(ext)
+                log.info(f"Loaded extension {ext}")
+            except Exception as e:
+                log.warn(e)
