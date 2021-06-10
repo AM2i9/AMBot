@@ -1,5 +1,4 @@
 import discord
-from discord import channel
 import discord.utils
 from discord.ext import commands
 
