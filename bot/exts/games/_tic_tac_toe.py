@@ -2,9 +2,14 @@ import discord
 from discord.ext import commands
 from discord_components import DiscordComponents, Button, ButtonStyle
 
+COG_DESCRIPTION = "A game of Tic-Tac-Toe."
+
+COMMAND_DESCRIPTION = "Challenge a user to a game of Tic-Tac-Toe"
+
 class TicTacToe(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+        self.description = COG_DESCRIPTION
 
     @commands.Cog.listener()
     async def on_ready(self):
@@ -80,7 +85,7 @@ class TicTacToe(commands.Cog):
             
             await boardClick.respond(type=7,content=f"It is {players[turn].mention}'s turn.", components = components)
 
-    @commands.command(aliases=['ttt','tic-tac-toe'])
+    @commands.command(aliases=['ttt','tic-tac-toe'], description = COMMAND_DESCRIPTION)
     async def tictactoe(self, ctx, user: discord.Member = None):
 
         while not user:
