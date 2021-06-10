@@ -1,29 +1,29 @@
 import discord
 from discord.ext import commands
 
-MOVE_DESCRIPTION = "Move users from one voice channel to another. Requires the `Move Members` permission. User must be in channel in order to move all members`"
+COG_DESCRIPTION = "A helpful voice channel extension that provides commands for better controlling your VC's."
 
-MUTE_DESCRIPTION = "Mute one or more users while they are in voice channels. Requires the `Mute Members` permission. User must be in channel in order to move all members`"
+BASE_DESCRIPTION = "Base VCTools command. For all commands, the `all` keyword can be used to use the command on all users in your current voice channel."
 
-UNMUTE_DESCRIPTION = "Unmute one or more users while they are in voice channels. Requires the `Mute Members` permission. User must be in channel in order to move all members`"
+MOVE_DESCRIPTION = "Move users from one voice channel to another. Requires the `Move Members` permission."
+
+MUTE_DESCRIPTION = "Mute one or more users while they are in voice channels. Requires the `Mute Members` permission."
+
+UNMUTE_DESCRIPTION = "Unmute one or more users while they are in voice channels. Requires the `Mute Members` permission."
     
-DEAFEN_DESCRIPTION = "Deafen one or more users while they are in voice channels. Requires the `Deafen Members` permission. User must be in channel in order to move all members`"
+DEAFEN_DESCRIPTION = "Deafen one or more users while they are in voice channels. Requires the `Deafen Members` permission."
 
-UNDEAFEN_DESCRIPTION = "Undeafen one or more users while they are in voice channels. Requires the `Deafen Members` permission. User must be in channel in order to move all members"
+UNDEAFEN_DESCRIPTION = "Undeafen one or more users while they are in voice channels. Requires the `Deafen Members` permission."
 
 
-class VcTools(commands.Cog):
+class VCTools(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+        self.description = COG_DESCRIPTION
 
-    @commands.group(pass_context=True)
+    @commands.group(pass_context=True, description = BASE_DESCRIPTION)
     async def vc(self,ctx):
-        pass
-
-    @vc.error
-    async def on_command_error(self, ctx, error):
-        print(error)
-        print(type(error))
+        await ctx.invoke(self.bot.get_command("help"), "VCTools")
     
     async def _changeState(self, ctx, users, state = {}):
         word = state["action_name"]
@@ -87,4 +87,4 @@ class VcTools(commands.Cog):
         await self._changeState(ctx, users, { "action_name": "undeafen", "deafen": False })
 
 def setup(bot):
-    bot.add_cog(VcTools(bot))
+    bot.add_cog(VCTools(bot))

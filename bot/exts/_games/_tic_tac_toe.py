@@ -96,6 +96,3 @@ class TicTacToe(commands.Cog):
             return
         
         await self.game(ctx, user)
-
-def setup(bot):
-    bot.add_cog(TicTacToe(bot))

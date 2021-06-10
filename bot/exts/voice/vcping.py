@@ -2,10 +2,12 @@ import discord
 import discord.utils
 from discord.ext import commands
 
+COG_DESCRIPTION = "Voice channel roles."
 class VCPing(commands.Cog):
 
     def __init__(self,bot):
         self.bot = bot
+        self.description = COG_DESCRIPTION
 
     @commands.Cog.listener()
     async def on_voice_state_update(self,member,before,after):
