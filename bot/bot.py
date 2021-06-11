@@ -5,6 +5,7 @@ from discord.ext import commands
 
 from bot import exts
 import bot.config as conf
+from bot.utils import _Utils
 
 log = logging.getLogger('bot')
 
@@ -35,6 +36,10 @@ class Bot(commands.Bot):
 
     def load_extensions(self):
         log.info("Loading extensions...")
+
+        self.add_cog(_Utils(self))
+        log.info("Loading utils module")
+
         for ext in exts.walk():
             try:
                 self.load_extension(ext)
