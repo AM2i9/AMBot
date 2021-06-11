@@ -21,6 +21,7 @@ class VCPing(commands.Cog):
             channel_name = before.channel.name
             role = discord.utils.get(member.guild.roles,name=channel_name)
             if role: await member.remove_roles(role)
+            if len(before.channel.members) == 0: await role.delete()
 
 def setup(bot):
     bot.add_cog(VCPing(bot))
