@@ -25,7 +25,7 @@ jobs:
     
       - name: Call server endpoint
         run: |
-          curl ${{ secrets.SERVER_ENDPOINT }} \
+          curl ${{ secrets.SERVER_ENDPOINT }}/power \
             -H 'Accept: application/json' \
             -H 'Content-Type: application/json' \
             -H 'Authorization: Bearer ${{ secrets.PANEL_KEY }}' \
