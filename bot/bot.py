@@ -19,6 +19,10 @@ class Bot(commands.Bot):
     async def on_ready(self):
         if not self.ready:
             self.ready = True
+
+            # The print statement is here for the sole reason of satisfying my server's "running" conditions
+            print("Logged in")
+            
             log.info(f'Bot logged in as {self.user}')
         else:
             log.info('Bot reconnected')
