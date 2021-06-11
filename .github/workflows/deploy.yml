@@ -22,10 +22,10 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-
+    
       - name: Call server endpoint
         run: |
-          curl "$SERVER_ENDPOINT" \
+          curl ${{ SERVER_ENDPOINT }} \
             -H 'Accept: application/json' \
             -H 'Content-Type: application/json' \
             -H 'Authorization: Bearer $PANEL_KEY' \
