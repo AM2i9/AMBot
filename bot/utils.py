@@ -8,6 +8,7 @@ log = logging.getLogger('bot')
 class _Utils(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+        self.utils.invoke_without_command = True
     
     @commands.group(pass_context=True, description="Owner utils")
     async def utils(self,ctx):
@@ -16,7 +17,8 @@ class _Utils(commands.Cog):
     @utils.command(description="List all loaded extensions")
     @commands.is_owner()
     async def listexts(self, ctx):
-        await ctx.reply("The following extensions are loaded: ```%s```" % ('\n'.join(self.bot.extensions)))
+        exts = '\n'.join(self.bot.extensions)
+        await ctx.reply("The following extensions are loaded: ```\n%s```" % (exts))
 
     @utils.command(description="Reload extensions")
     @commands.is_owner()

@@ -19,6 +19,7 @@ UNDEAFEN_DESCRIPTION = "Undeafen one or more users while they are in voice chann
 class VCTools(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+        self.vc.invoke_without_command = True
         self.description = COG_DESCRIPTION
 
     @commands.group(pass_context=True, description = BASE_DESCRIPTION)
