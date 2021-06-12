@@ -5,7 +5,7 @@ from discord.ext import commands
 
 log = logging.getLogger('bot')
 
-class _Utils(commands.Cog):
+class _OwnerUtils(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.utils.invoke_without_command = True
