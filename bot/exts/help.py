@@ -17,7 +17,7 @@ class _Help(commands.Cog):
         if not args:
 
             embed.title = 'AMBOT'
-            embed.description=f'Use `{conf.Bot.prefix}help <module>` to learn more about it.'
+            embed.description=f'Use `{conf.Bot.prefix}help <module>` to learn more about it. (Case sensitive)'
             cogs = ''
 
             for cog in self.bot.cogs:
