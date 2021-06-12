@@ -1,4 +1,4 @@
-from ._tic_tac_toe import TicTacToe
+from ._games import Games
 
 def setup(bot):
-    bot.add_cog(TicTacToe(bot))
+    bot.add_cog(Games(bot))

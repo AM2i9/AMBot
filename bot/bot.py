@@ -2,6 +2,7 @@ import asyncio
 import logging
 import discord
 from discord.ext import commands
+from dislash import SlashClient
 
 from bot import exts
 import bot.config as conf
@@ -15,6 +16,8 @@ class Bot(commands.Bot):
         self.ready = False
         
         super().__init__(*args, **kwargs)
+
+        SlashClient(self)
     
     async def on_ready(self):
         if not self.ready:
