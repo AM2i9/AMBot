@@ -5,7 +5,7 @@ from discord.ext import commands
 class Pinboard(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.description =- "Pinboard for your messages"
+        self.description = "Pinboard for your messages"
 
     @commands.command(description="Respond to a message or include a message id/link to pin your message to a #pinboard channel")
     @commands.has_permissions(manage_messages=True)

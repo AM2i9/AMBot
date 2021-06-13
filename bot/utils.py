@@ -12,7 +12,7 @@ class _OwnerUtils(commands.Cog):
     
     @commands.group(pass_context=True, description="Owner utils")
     async def utils(self,ctx):
-        self.bot.invoke_help(ctx, "_OwnerUtils")
+        await self.bot.invoke_help(ctx, "_OwnerUtils")
 
     @utils.command(description="List all loaded extensions")
     @commands.is_owner()
