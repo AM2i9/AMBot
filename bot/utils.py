@@ -18,7 +18,7 @@ class _OwnerUtils(commands.Cog):
     @commands.is_owner()
     async def listexts(self, ctx):
         exts = '\n'.join(self.bot.extensions)
-        await ctx.reply("The following extensions are loaded: ```\n%s```" % (exts))
+        await ctx.reply("The following extensions are loaded: ```\n%s```" % (exts), delete_after=15)
 
     @utils.command(description="Reload extensions")
     @commands.is_owner()
@@ -47,4 +47,4 @@ class _OwnerUtils(commands.Cog):
             log.info(f"Reloaded extension {ext}")
         
         log.info("Reload finished.")
-        await msg.edit(content="The following extensions have been reloaded: ```%s```" % ('\n'.join(final_exts)))
+        await msg.edit(content="The following extensions have been reloaded: ```%s```" % ('\n'.join(final_exts)), delete_after=15)
