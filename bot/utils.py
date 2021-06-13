@@ -69,7 +69,7 @@ class _OwnerUtils(commands.Cog):
         for ext in exts:
             
             try:
-                self.bot.load_exstension(ext)
+                self.bot.load_extension(ext)
                 log.info(f"Loaded extension {ext}")
             except ExtensionNotFound:
                 log.info(f"{ext} was not found.")
@@ -103,16 +103,16 @@ class _OwnerUtils(commands.Cog):
         for ext in exts:
             
             try:
-                self.bot.load_exstension(ext)
+                self.bot.unload_extension(ext)
                 log.info(f"Unloaded extension {ext}")
-            except ExtensionNotFound:
+            except commands.ExtensionNotFound:
                 log.info(f"{ext} was not found.")
                 final_exts[final_exts.index(ext)] = f"{ext} (Not found)"
-            except ExtensionAlreadyLoaded:
+            except commands.ExtensionNotLoaded:
                 log.info(f"{ext} was not found.")
-                final_exts[final_exts.index(ext)] = f"{ext} (Not found)"
-            except:
-                log.info(f"{ext} failed to load.")
+                final_exts[final_exts.index(ext)] = f"{ext} (Not loaded)"
+            except Exception as e:
+                log.info(f"{ext} failed to load.\n{e}")
                 final_exts[final_exts.index(ext)] = f"{ext} (Failed to unload)"
         
         log.info("Unload finished.")
