@@ -24,7 +24,7 @@ class VCTools(commands.Cog):
 
     @commands.group(pass_context=True, description = BASE_DESCRIPTION)
     async def vc(self,ctx):
-        self.bot.invoke_help(ctx, "VCTools")
+        await self.bot.invoke_help(ctx, "VCTools")
     
     async def _changeState(self, ctx, users, state = {}):
         word = state["action_name"]
