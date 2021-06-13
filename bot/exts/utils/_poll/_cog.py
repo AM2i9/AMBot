@@ -9,7 +9,7 @@ class Poll(commands.Cog):
 
     @commands.group(aliases=["vote", "ask", "ballot"])
     async def poll(self, ctx):
-        await ctx.invoke(self.bot.get_command("help"), "Poll")
+        self.bot.invoke_help(ctx, "Poll")
 
     @poll.command()
     async def create(self, ctx, prompt,  *options):

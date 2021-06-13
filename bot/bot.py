@@ -53,3 +53,6 @@ class Bot(commands.Bot):
                 log.info(f"Loaded extension {ext}")
             except Exception as e:
                 log.warn(e)
+
+    async def invoke_help(self, ctx, module):
+        await ctx.invoke(self.get_command('help'), module)

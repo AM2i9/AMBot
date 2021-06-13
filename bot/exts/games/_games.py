@@ -12,7 +12,7 @@ class Games(commands.Cog):
 
     @commands.group(name="games", description="Base Games command. Will show this message.")
     async def games(self, ctx):
-        await ctx.invoke(self.bot.get_command("help"), "Games")
+        self.bot.invoke_help(ctx, "Games")
 
     @games.command(aliases=['ttt','tic-tac-toe'], description = "A game of Tic-Tac-Toe")
     async def tictactoe(self, ctx, user: discord.Member = None):
