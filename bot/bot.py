@@ -1,12 +1,13 @@
 import asyncio
 import logging
+
 import discord
 from discord.ext import commands
 from dislash import SlashClient
 
 from bot import exts
 import bot.config as conf
-from bot.utils import _OwnerUtils
+from bot.utils.owner import _OwnerUtils
 
 log = logging.getLogger('bot')
 
